@@ -1,0 +1,128 @@
+// car-rental-grpc/proto/rental.proto
+syntax = "proto3";
+package rental;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "io.ballerina.rental";
+option java_outer_classname = "RentalProto";
+
+service RentalService {
+    // Unary: Admin registers a car, returns the plate
+    rpc addCar(AddCarRequest) returns (AddCarResponse);
+
+    // Client-streaming: Create multiple users (customers/admins)
+    rpc createUsers(stream User) returns (CreateUsersResponse);
+
+    // Unary: Admin updates car details
+    rpc updateCar(UpdateCarRequest) returns (UpdateCarResponse);
+
+    // Unary: Admin removes a car, returns updated car list
+    rpc removeCar(RemoveCarRequest) returns (RemoveCarResponse);
+
+    // Server-streaming: Customers get available cars
+    rpc listAvailableCars(ListCarsRequest) returns (stream Car);
+
+    // Unary: Customer searches for a specific car
+    rpc searchCar(SearchCarRequest) returns (SearchCarResponse);
+
+    // Unary: Customer adds a car to cart with dates
+    rpc addToCart(AddToCartRequest) returns (AddToCartResponse);
+
+    // Unary: Customer places a reservation
+    rpc placeReservation(PlaceReservationRequest) returns (PlaceReservationResponse);
+}
+
+message AddCarRequest {
+    string make = 1;
+    string model = 2;
+    int32 year = 3;
+    double dailyPrice = 4;
+    int32 mileage = 5;
+    string plate = 6;  // Unique ID
+    string status = 7;  // AVAILABLE/UNAVAILABLE
+}
+
+message AddCarResponse {
+    string plate = 1;
+    string message = 2;
+}
+
+message User {
+    string id = 1;
+    string name = 2;
+    string role = 3;  // CUSTOMER/ADMIN
+    // Optional: Add more profile fields if desired
+}
+
+message CreateUsersResponse {
+    int32 count = 1;
+    string message = 2;
+}
+
+message UpdateCarRequest {
+    string plate = 1;
+    double dailyPrice = 2;  // Optional update
+    string status = 3;     // Optional update (AVAILABLE/UNAVAILABLE)
+    // Add other fields (e.g., mileage) if needed
+}
+
+message UpdateCarResponse {
+    string message = 1;
+}
+
+message RemoveCarRequest {
+    string plate = 1;
+}
+
+message RemoveCarResponse {
+    repeated Car cars = 1;  // Full updated list
+}
+
+message ListCarsRequest {
+    string filter = 1;  // Optional filter (e.g., "Toyota" or year)
+}
+
+message Car {
+    string make = 1;
+    string model = 2;
+    int32 year = 3;
+    double dailyPrice = 4;
+    int32 mileage = 5;
+    string plate = 6;
+    string status = 7;  // AVAILABLE/UNAVAILABLE
+}
+
+message SearchCarRequest {
+    string plate = 1;
+}
+
+message SearchCarResponse {
+    Car car = 1;
+    bool available = 2;
+    string message = 3;
+}
+
+message AddToCartRequest {
+    string userId = 1;
+    string plate = 2;
+    google.protobuf.Timestamp startDate = 3;
+    google.protobuf.Timestamp endDate = 4;
+}
+
+message AddToCartResponse {
+    string message = 1;
+    bool success = 2;
+}
+
+message PlaceReservationRequest {
+    string userId = 1;
+}
+
+message PlaceReservationResponse {
+    double totalPrice = 1;
+    string message = 2;
+    bool success = 3;
+}
