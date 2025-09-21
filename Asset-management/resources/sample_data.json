@@ -1,0 +1,72 @@
+{
+  "assets": [
+    {
+      "assetTag": "EQ-001",
+      "name": "Dell Laptop Computer",
+      "faculty": "Engineering",
+      "department": "Computer Science",
+      "dateAcquired": "2024-01-15",
+      "status": "ACTIVE",
+      "components": [
+        {
+          "name": "Hard Drive",
+          "description": "1TB SSD Storage",
+          "serialNumber": "HD-001",
+          "status": "ACTIVE"
+        },
+        {
+          "name": "RAM",
+          "description": "16GB DDR4 Memory",
+          "serialNumber": "RAM-001",
+          "status": "ACTIVE"
+        }
+      ],
+      "schedules": [
+        {
+          "type": "YEARLY",
+          "nextDue": "2024-12-15",
+          "description": "Annual maintenance and cleaning",
+          "status": "ACTIVE"
+        },
+        {
+          "type": "QUARTERLY",
+          "nextDue": "2024-03-15",
+          "description": "Quarterly inspection",
+          "status": "ACTIVE"
+        }
+      ],
+      "workOrders": []
+    },
+    {
+      "assetTag": "VEH-001",
+      "name": "University Van",
+      "faculty": "Business",
+      "department": "Finance",
+      "dateAcquired": "2024-02-01",
+      "status": "ACTIVE",
+      "components": [
+        {
+          "name": "Engine",
+          "description": "2.0L Diesel Engine",
+          "serialNumber": "ENG-001",
+          "status": "ACTIVE"
+        }
+      ],
+      "schedules": [
+        {
+          "type": "MONTHLY",
+          "nextDue": "2024-02-15",
+          "description": "Monthly vehicle inspection",
+          "status": "ACTIVE"
+        }
+      ],
+      "workOrders": []
+    }
+  ],
+  "referenceData": {
+    "faculties": ["Engineering", "Business", "Science", "Medicine", "Arts"],
+    "departments": ["Mechanical", "Electrical", "Computer Science", "Civil", "Finance", "Marketing", "Physics", "Chemistry", "Cardiology", "Surgery"],
+    "assetTypes": ["Equipment", "Vehicle", "Server", "Furniture"],
+    "statuses": ["ACTIVE", "UNDER_REPAIR", "DISPOSED"]
+  }
+}
