@@ -11,7 +11,7 @@ public function main() returns error? {
     io:println("=== gRPC Car Rental Demo ===");
 
     // 1. Add car (admin)
-    rental:AddCarRequest addReq = {
+    rental:AddCarRequest = {
         make: "Toyota",
         model: "Camry",
         year: 2023,
