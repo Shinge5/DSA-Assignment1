@@ -1,5 +1,5 @@
 [package]
-org = "administrator"
+org = "administrato"
 name = "car_rental_grpc"
 version = "0.1.0"
 distribution = "2201.12.9"
