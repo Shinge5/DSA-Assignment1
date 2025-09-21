@@ -96,7 +96,7 @@ public function main() returns error? {
         io:println("✗ Failed to add schedule");
     }
     
-    // 6. Create Work Order
+    // 6. Create Work Order for EQ-001
     io:println("\n6. Creating Work Order for EQ-001...");
     http:Response woResponse = check assetClient->post("/assets/EQ-001/work-orders", {
         description: "Screen replacement needed",
