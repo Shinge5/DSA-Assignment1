@@ -66,7 +66,7 @@ public function main() returns error? {
         io:println("✗ Failed to retrieve Engineering assets");
     }
     
-    // 4. Add Component
+    // 4. Add Component to EQ-001
     io:println("\n4. Adding Component to EQ-001...");
     http:Response compResponse = check assetClient->post("/assets/EQ-001/components", {
         name: "Hard Drive",
@@ -81,7 +81,7 @@ public function main() returns error? {
         io:println("✗ Failed to add component");
     }
     
-    // 5. Add Maintenance Schedule
+    // 5. Add Maintenance Schedule to EQ-001
     io:println("\n5. Adding Maintenance Schedule to EQ-001...");
     http:Response scheduleResponse = check assetClient->post("/assets/EQ-001/schedules", {
         'type: "YEARLY",
